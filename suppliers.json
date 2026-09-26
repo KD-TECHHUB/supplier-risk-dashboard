@@ -1,0 +1,140 @@
+{
+  "meta": {
+    "currency_base": "USD",
+    "note": "Sample dataset modeled on a typical UAE trading and contracting company's supplier base. Replace with an export from your P2P or ERP system (SAP Ariba, Oracle, Coupa) to run this against real spend."
+  },
+  "suppliers": [
+    {
+      "id": "SUP-101",
+      "name": "Shandong Iron & Steel Group",
+      "category": "Structural Steel",
+      "country": "China",
+      "currency": "CNY",
+      "commodity_exposure": { "steel": 0.85, "aluminum": 0.0, "oil": 0.1 },
+      "uses_suez_route": true,
+      "on_time_delivery_rate": 0.81,
+      "monthly_spend_usd": [420000, 435000, 410000, 460000, 610000, 590000]
+    },
+    {
+      "id": "SUP-102",
+      "name": "Emirates Aluminium Trading LLC",
+      "category": "Aluminium Extrusions",
+      "country": "United Arab Emirates",
+      "currency": "AED",
+      "commodity_exposure": { "steel": 0.05, "aluminum": 0.9, "oil": 0.05 },
+      "uses_suez_route": false,
+      "on_time_delivery_rate": 0.97,
+      "monthly_spend_usd": [265000, 270000, 280000, 275000, 290000, 295000]
+    },
+    {
+      "id": "SUP-103",
+      "name": "Hyundai Heavy Fabrication",
+      "category": "Structural Steel",
+      "country": "South Korea",
+      "currency": "KRW",
+      "commodity_exposure": { "steel": 0.7, "aluminum": 0.1, "oil": 0.1 },
+      "uses_suez_route": true,
+      "on_time_delivery_rate": 0.88,
+      "monthly_spend_usd": [180000, 175000, 190000, 185000, 210000, 340000]
+    },
+    {
+      "id": "SUP-104",
+      "name": "Al Ghurair Foods Packaging",
+      "category": "Industrial Packaging",
+      "country": "United Arab Emirates",
+      "currency": "AED",
+      "commodity_exposure": { "steel": 0.0, "aluminum": 0.15, "oil": 0.2 },
+      "uses_suez_route": false,
+      "on_time_delivery_rate": 0.95,
+      "monthly_spend_usd": [95000, 98000, 101000, 99000, 102000, 100000]
+    },
+    {
+      "id": "SUP-105",
+      "name": "Ruhr Valley Precision Parts",
+      "category": "MRO and Spares",
+      "country": "Germany",
+      "currency": "EUR",
+      "commodity_exposure": { "steel": 0.4, "aluminum": 0.3, "oil": 0.05 },
+      "uses_suez_route": true,
+      "on_time_delivery_rate": 0.93,
+      "monthly_spend_usd": [140000, 145000, 138000, 150000, 149000, 152000]
+    },
+    {
+      "id": "SUP-106",
+      "name": "Gujarat Polymers & Chemicals",
+      "category": "Industrial Packaging",
+      "country": "India",
+      "currency": "INR",
+      "commodity_exposure": { "steel": 0.0, "aluminum": 0.0, "oil": 0.55 },
+      "uses_suez_route": true,
+      "on_time_delivery_rate": 0.84,
+      "monthly_spend_usd": [76000, 79000, 81000, 78000, 130000, 128000]
+    },
+    {
+      "id": "SUP-107",
+      "name": "ADNOC Approved Logistics Co",
+      "category": "Freight and Logistics",
+      "country": "United Arab Emirates",
+      "currency": "AED",
+      "commodity_exposure": { "steel": 0.0, "aluminum": 0.0, "oil": 0.65 },
+      "uses_suez_route": true,
+      "on_time_delivery_rate": 0.9,
+      "monthly_spend_usd": [310000, 305000, 320000, 330000, 345000, 360000]
+    },
+    {
+      "id": "SUP-108",
+      "name": "Riyadh Electromechanical Works",
+      "category": "MRO and Spares",
+      "country": "Saudi Arabia",
+      "currency": "SAR",
+      "commodity_exposure": { "steel": 0.3, "aluminum": 0.2, "oil": 0.1 },
+      "uses_suez_route": false,
+      "on_time_delivery_rate": 0.96,
+      "monthly_spend_usd": [88000, 90000, 87000, 91000, 89000, 92000]
+    },
+    {
+      "id": "SUP-109",
+      "name": "Shenzhen Circuit Solutions",
+      "category": "Electrical and Instrumentation",
+      "country": "China",
+      "currency": "CNY",
+      "commodity_exposure": { "steel": 0.05, "aluminum": 0.2, "oil": 0.05 },
+      "uses_suez_route": true,
+      "on_time_delivery_rate": 0.79,
+      "monthly_spend_usd": [64000, 66000, 68000, 70000, 71000, 118000]
+    },
+    {
+      "id": "SUP-110",
+      "name": "Anatolia Cable and Wire",
+      "category": "Electrical and Instrumentation",
+      "country": "Turkey",
+      "currency": "TRY",
+      "commodity_exposure": { "steel": 0.15, "aluminum": 0.55, "oil": 0.05 },
+      "uses_suez_route": false,
+      "on_time_delivery_rate": 0.86,
+      "monthly_spend_usd": [52000, 54000, 51000, 53000, 55000, 57000]
+    },
+    {
+      "id": "SUP-111",
+      "name": "Jebel Ali Bulk Terminal Services",
+      "category": "Freight and Logistics",
+      "country": "United Arab Emirates",
+      "currency": "AED",
+      "commodity_exposure": { "steel": 0.0, "aluminum": 0.0, "oil": 0.4 },
+      "uses_suez_route": true,
+      "on_time_delivery_rate": 0.92,
+      "monthly_spend_usd": [198000, 202000, 195000, 205000, 240000, 265000]
+    },
+    {
+      "id": "SUP-112",
+      "name": "Karachi Textile and Industrial Fabrics",
+      "category": "Industrial Packaging",
+      "country": "Pakistan",
+      "currency": "PKR",
+      "commodity_exposure": { "steel": 0.0, "aluminum": 0.0, "oil": 0.3 },
+      "uses_suez_route": true,
+      "on_time_delivery_rate": 0.77,
+      "monthly_spend_usd": [41000, 43000, 40000, 42000, 44000, 45000]
+    }
+  ]
+}

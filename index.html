@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Supplier Risk and Spend Control Room</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <h1>Supplier Risk &amp; Spend Control Room</h1>
+    <p class="subtitle">Live currency exposure, commodity and freight signals, mapped to your supplier base</p>
+  </div>
+  <div class="topbar-right">
+    <div class="clock-block">
+      <span class="clock-label">Last updated</span>
+      <span id="last-updated" class="clock-value">--:--:--</span>
+    </div>
+    <div class="clock-block">
+      <span class="clock-label">Next refresh</span>
+      <span id="next-refresh" class="clock-value">5:00</span>
+    </div>
+    <button id="refresh-btn" class="btn-primary">Refresh now</button>
+  </div>
+</header>
+
+<section class="kpi-strip">
+  <div class="kpi-card">
+    <span class="kpi-label">Total monthly spend tracked</span>
+    <span id="kpi-total-spend" class="kpi-value">$0</span>
+  </div>
+  <div class="kpi-card">
+    <span class="kpi-label">Active suppliers</span>
+    <span id="kpi-supplier-count" class="kpi-value">0</span>
+  </div>
+  <div class="kpi-card tone-high">
+    <span class="kpi-label">High and critical risk suppliers</span>
+    <span id="kpi-high-risk-count" class="kpi-value">0</span>
+  </div>
+  <div class="kpi-card">
+    <span class="kpi-label">Average risk score</span>
+    <span id="kpi-avg-risk" class="kpi-value">0</span>
+  </div>
+  <div class="kpi-card tone-medium">
+    <span class="kpi-label">Spend anomalies this cycle</span>
+    <span id="kpi-anomaly-count" class="kpi-value">0</span>
+  </div>
+</section>
+
+<main class="grid">
+
+  <section class="panel span-4">
+    <div class="panel-header">
+      <h2>Currency exposure</h2>
+      <span id="fx-status" class="pill">Loading</span>
+    </div>
+    <p id="fx-asof" class="panel-note"></p>
+    <table class="data-table">
+      <thead><tr><th>Currency</th><th class="num">Rate vs USD</th><th class="num">7 day change</th></tr></thead>
+      <tbody id="fx-table-body"></tbody>
+    </table>
+  </section>
+
+  <section class="panel span-4">
+    <div class="panel-header">
+      <h2>Commodity prices</h2>
+      <span id="commodity-status" class="pill">Loading</span>
+    </div>
+    <p class="panel-note">Steel, aluminium and Brent crude, the three inputs that move landed cost for most trading and contracting suppliers.</p>
+    <table class="data-table">
+      <thead><tr><th>Commodity</th><th class="num">Latest</th><th class="num">Recent change</th></tr></thead>
+      <tbody id="commodity-table-body"></tbody>
+    </table>
+  </section>
+
+  <section class="panel span-4">
+    <div class="panel-header">
+      <h2>Suez / Red Sea route risk</h2>
+      <span id="freight-status" class="pill">Loading</span>
+    </div>
+    <div class="freight-readout">
+      <span id="freight-index-value" class="freight-value">0</span>
+      <span id="freight-index-label" class="tag">--</span>
+    </div>
+    <p class="panel-note">Applied only to suppliers whose shipments actually route through Suez. Local UAE, Saudi and Turkish suppliers by road or short sea are shielded from most of this exposure.</p>
+  </section>
+
+  <section class="panel span-6 chart-panel">
+    <div class="panel-header"><h2>Commodity trend</h2></div>
+    <div class="chart-holder"><canvas id="commodity-chart"></canvas></div>
+  </section>
+
+  <section class="panel span-6 chart-panel">
+    <div class="panel-header"><h2>Freight risk trend</h2></div>
+    <div class="chart-holder"><canvas id="freight-chart"></canvas></div>
+  </section>
+
+  <section class="panel span-6 chart-panel">
+    <div class="panel-header"><h2>Highest risk suppliers</h2></div>
+    <div class="chart-holder"><canvas id="risk-chart"></canvas></div>
+  </section>
+
+  <section class="panel span-6 chart-panel">
+    <div class="panel-header"><h2>Spend by category</h2></div>
+    <div class="chart-holder"><canvas id="spend-chart"></canvas></div>
+  </section>
+
+  <section class="panel span-8">
+    <div class="panel-header">
+      <h2>Supplier risk register</h2>
+      <div class="panel-controls">
+        <select id="category-filter">
+          <option value="all">All categories</option>
+        </select>
+        <select id="sort-select">
+          <option value="risk">Sort by risk score</option>
+          <option value="spend">Sort by spend</option>
+          <option value="name">Sort by name</option>
+        </select>
+      </div>
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Supplier</th>
+          <th class="num">Spend this month</th>
+          <th class="num">Currency</th>
+          <th class="num">On time delivery</th>
+          <th>Risk band</th>
+          <th class="num">Risk score</th>
+        </tr>
+      </thead>
+      <tbody id="supplier-table-body"></tbody>
+    </table>
+  </section>
+
+  <section class="panel span-4">
+    <div class="panel-header"><h2>Spend anomalies</h2></div>
+    <ul id="anomaly-list" class="signal-list"></ul>
+  </section>
+
+  <section class="panel span-12">
+    <div class="panel-header"><h2>Alerts this cycle</h2></div>
+    <ul id="alert-list" class="signal-list horizontal-wrap"></ul>
+  </section>
+
+</main>
+
+<footer class="foot-note">
+  Sample supplier and spend data for demonstration. Currency rates are live from the Frankfurter API (European Central Bank reference rates). Commodity and freight signals run in simulation mode until a live feed is configured, see README.md.
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/fx.js"></script>
+<script src="js/commodities.js"></script>
+<script src="js/freight.js"></script>
+<script src="js/risk-engine.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
