@@ -4,7 +4,7 @@ const App = {
   countdownTimer: null,
 
   async init() {
-    const resp = await fetch("data/suppliers.json");
+    const resp = await fetch("suppliers.json");
     const data = await resp.json();
     App.suppliers = data.suppliers;
 
